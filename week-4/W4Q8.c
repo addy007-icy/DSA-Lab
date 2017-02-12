@@ -59,36 +59,36 @@ int mergesort(int arr[], int l, int r)
 	}
 }
 
+
 int main()
 {
-	int i, j, n, k;
-	scanf("%d", &n);
-	int arr[n];
-	for (i = 0; i < n; i++)
+	int i, j, size, k;
+	scanf("%d", &size);
+	int arr[size];
+	for (i = 0; i < size; i++)
 	{
 		scanf("%d", &arr[i]);
 	}
 
-	mergesort(arr, 0, n - 1);
-
+	mergesort(arr, 0, size - 1);
 	int flag = 0;
 
-	for (k = 0; k < n; k++)
-	{	//printf("%d\n", k);
-		for (i = 0, j = n - 1; i < j;)
-		{	
+	for (k = 0; k < size; k++)
+	{
+		for (i = 0, j = size - 1; i < j;)
+		{
 				if (i != k && j != k)
-			{	//printf("%d %d\n", i, j);
+			{
+
 				int sum = arr[i] + arr[j];
 				if (sum == arr[k])
 				{
 					flag ++;
-					// printf("%d + %d = %d\n",arr[i],arr[j],arr[k]);
-					//break;
+					// printf("FOUND: %d + %d = %d\n",arr[i],arr[j],arr[k]);
 					i++;
 
 				}
-				else if (sum < k)
+				else if (sum < arr[k])
 				{
 					i++;
 
@@ -108,9 +108,6 @@ int main()
 			}
 		}
 	}
-	if (flag == 0)
-		printf("NOT FOUND ");
-	else
-		printf("number of triplets -> %d\n", flag);
+	printf("%d\n", flag);
 	return 0;
 }
