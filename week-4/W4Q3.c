@@ -2,29 +2,30 @@
 #include <stdlib.h>
 
 int a[10005];
+int n;
 int binar(int l, int r){
     int mid = (l + r )/2;
 
-   // printf("%d\n",a[mid]);
+    printf("%d\n",a[mid]);
     if(!(a[mid] < a[mid+1] || a[mid] <a [mid-1]))
     {
    //     printf("%d\n",a[mid]);
         return mid;
     }
-    if(a[mid]<=a[mid-1])
+    if(a[mid]<=a[mid-1] && mid!=1 )
     {
             return binar(l,mid-1);
     }
-    if(a[mid]<=a[mid+1])
+    if(a[mid]<=a[mid+1] && mid!=n)
     {
         return binar(mid+1,r);
     }
+    if(mid == 1 || mid == n) return mid;
     return -1;
 }
 
 int main()
 {
-    int n;
     scanf("%d",&n);
     int i;
     a[0] = 100000;
