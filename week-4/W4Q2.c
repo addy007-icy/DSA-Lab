@@ -1,4 +1,4 @@
-#include<stdio.h>
+#include <stdio.h>
 #include <stdlib.h>
 
 int cmpfunc (const void * a, const void * b)
@@ -33,6 +33,6 @@ int main()
             maxid=a[i];
         }
     }
-    printf("%d",maxid);
+    printf("%d ",maxid);
     return 0;
 }

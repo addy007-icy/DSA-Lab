@@ -43,12 +43,7 @@ int main(int argc, char* argv[])
 		i++;
 	}
 	int size = i;
-	// int c= 0;
-	// while(c<size)
-	// {
-	// 	printf("%d\n", b[c].year);
-	// 	c++;
-	// }
+
 	for(i=1;i<n;i++)
 	{
 		int j=i-1;
