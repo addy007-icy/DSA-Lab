@@ -1,0 +1,97 @@
+#include <stdio.h>
+#include<stdlib.h>
+
+typedef struct node nodet;
+
+struct node{
+    int data;
+    nodet *next;
+};
+
+void push(nodet **p){
+    int el;
+    scanf("%d",&el);
+    nodet *temp;
+    temp=(nodet*)malloc(sizeof(nodet));
+    temp->data=el;
+    temp->next=NULL;
+
+    if((*p) == NULL){
+        (*p)=temp;
+    }
+    else{
+        temp->next=(*p);
+        (*p)=temp;
+    }
+
+}
+
+void disp(nodet **p){
+    nodet *temp;
+    temp=(*p);
+    if((*p)==NULL){
+        printf("Empty List\n");
+        return;
+    }
+    while(temp->next != NULL){
+        printf("%d----->",temp->data);
+        temp=temp->next;
+    }
+    printf("%d\n",temp->data);
+}
+void fix(nodet **p){
+    int i;
+    nodet *list[4];
+    for(i=0;i<4;i++)
+        list[i]=NULL;
+
+    if((*p)==NULL)
+        return;
+    nodet *temp;
+    temp=(*p);
+    while(temp != NULL){
+        printf("Data %d\n",temp->data);
+        if(temp->data %2 == 0){
+                if(list[0]==NULL){
+                 list[0]=temp;
+                 list[1]=temp;
+                }
+                else{
+                    list[1]->next=temp;
+                    list[1]=list[1]->next;
+                }
+                temp=temp->next;
+                list[1]->next=NULL;
+            }
+        else{
+            if(list[2]==NULL){
+                 list[2]=temp;
+                 list[3]=temp;
+                }
+                else{
+                    list[3]->next=temp;
+                    list[3]=list[3]->next;
+                }
+                temp=temp->next;
+                list[3]->next=NULL;
+        }
+    }
+    list[1]->next=list[2];
+    (*p)=list[0];
+}
+
+
+int main()
+{
+    int n,i;
+    nodet *head;
+    head=NULL;
+    scanf("%d",&n);
+    for(i=0;i<n;i++)
+        push(&head);
+
+    disp(&head);
+    fix(&head);
+    disp(&head);
+    return 0;
+}
